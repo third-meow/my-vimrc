@@ -11,7 +11,7 @@ Plugin 'nightsense/plumber'
 Plugin 'rfunix/vim-greenisgood'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'fatih/vim-go'
+"Plugin 'fatih/vim-go'
 Plugin 'elmcast/elm-vim'
 
 
@@ -24,7 +24,7 @@ set foldmethod=indent
 set foldlevel=99
 set ttimeoutlen=10
 set smartindent
-nnoremap <F2> :vs ~/src/.skel_cpp <Bar> :%y <Bar> :wq <Bar> :put! <CR>
+nnoremap <F2> :vs ~/src/.skel_cpp <Bar> :%y <Bar> :wq <Bar> :put! <CR> <CR>
 nnoremap <F3> :GoInfo <CR>
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 nnoremap <F6> <C-W>w 
@@ -45,8 +45,18 @@ au BufNewFile,BufRead *.tera set tabstop=2 softtabstop=2 shiftwidth=2 autoindent
 au BufNewFile,BufRead *.cs set tabstop=2 softtabstop=2 shiftwidth=2 autoindent
 au BufNewFile,BufRead *.txt set tabstop=4 softtabstop=4 shiftwidth=4 textwidth=80 list
 
+"""""""""""""""""""""""""""""""""""""""""""""""
+"Colour schemes""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""
+"Comment out all but one"""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""
 colorscheme dracula
 highlight Normal ctermbg=None
-
+"""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""
 "set termguicolors
 "colorscheme greenisgood
+"""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""
+
+
