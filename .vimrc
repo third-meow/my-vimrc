@@ -1,5 +1,5 @@
-set nocompatible              " required
-filetype off                  " required
+set nocompatible
+filetype off
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -18,8 +18,8 @@ Plugin 'elmcast/elm-vim'
 
 
 " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
+call vundle#end()
+filetype plugin indent on
 
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -57,15 +57,24 @@ set ttimeoutlen=10
 set autoindent
 set smartindent
 
+" ---------------------------------- NOT PERMANENT, YOU DONT WANT THIS PART
+" SLOW DOWN H & L		ENCOURGES USE OF w, e & b
+:noremap h :sleep 50m<CR>h
+:noremap l :sleep 50m<CR>l
+" -------------------------------------------------------------------------
+
 
 " remaps
-nnoremap <F2> :vs ~/src/.skel_cpp <Bar> :%y <Bar> :wq <Bar> :put! <CR> <CR>
 nnoremap <F3> :GoInfo <CR>
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 nnoremap <F6> <C-W>w
 nnoremap <F7> :bp<CR>
 nnoremap <F8> :bn<CR>
+
 nnoremap <silent> <Leader>l ml:execute 'match Search /\%'.line('.').'l/'<CR>
+" Snippit commands
+nnoremap <Leader>cpp :-1read $HOME/src/.skeleton.cpp<CR>4ji<TAB>
+nnoremap <Leader>html :-1read $HOME/src/.skeleton.html<CR>3jwf<i
 
 " airline extentions
 let g:airline_extensions = ['branch', 'tabline']
@@ -85,8 +94,6 @@ au BufNewFile,BufRead *.js call SetWebStyle()
 au BufNewFile,BufRead *.tera call SetWebStyle()
 au BufNewFile,BufRead *.json call SetWebStyle() 
 au BufNewFile,BufRead *.vue call SetWebStyle() | set filetype=html
-
-au BufNewFile,BufRead *.txt set list
 
 """""""""""""""""""""""""""""""""""""""""""""""
 "Defualt Colour scheme"""""""""""""""""""""""""
