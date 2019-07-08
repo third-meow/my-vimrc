@@ -15,6 +15,8 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'fatih/vim-go'
 Plugin 'elmcast/elm-vim'
+Plugin 'bluz71/vim-moonfly-colors'
+Plugin 'ervandew/supertab'
 
 
 " All of your Plugins must be added before the following line
@@ -24,7 +26,7 @@ filetype plugin indent on
 "~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 function SetOldStyle()
-	colorscheme dracula
+	colorscheme dracula 
 	highlight Normal ctermbg=None
 
 	set tabstop=2
@@ -34,6 +36,16 @@ endfunction
 
 function SetNewStyle()
 	colorscheme dracula
+	highlight Normal ctermbg=None
+
+	set tabstop=4
+	set softtabstop=4
+	set shiftwidth=4
+endfunction
+
+function SetRustStyle()
+	set termguicolors
+	colorscheme moonfly 
 	highlight Normal ctermbg=None
 
 	set tabstop=4
@@ -51,16 +63,18 @@ endfunction
 
 " global sets
 set number
+set wildmenu
 set foldmethod=indent
 set foldlevel=99
-set ttimeoutlen=10
+set ttimeoutlen=5
 set autoindent
 set smartindent
+set path+=**
 
 " ---------------------------------- NOT PERMANENT, YOU DONT WANT THIS PART
 " SLOW DOWN H & L		ENCOURGES USE OF w, e & b
-:noremap h :sleep 50m<CR>h
-:noremap l :sleep 50m<CR>l
+":noremap h :sleep 50m<CR>h
+":noremap l :sleep 50m<CR>l
 " -------------------------------------------------------------------------
 
 
@@ -68,8 +82,16 @@ set smartindent
 nnoremap <F3> :GoInfo <CR>
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 nnoremap <F6> <C-W>w
+tnoremap <F6>  <C-\><C-n><C-W>w
 nnoremap <F7> :bp<CR>
 nnoremap <F8> :bn<CR>
+nnoremap j gj
+nnoremap k gk
+
+" spelling related
+noremap <Leader>so :set spell<CR>
+noremap <Leader>sf :set spell!<CR>
+noremap <Leader>] z=1
 
 nnoremap <silent> <Leader>l ml:execute 'match Search /\%'.line('.').'l/'<CR>
 " Snippit commands
@@ -87,6 +109,8 @@ au BufNewFile,BufRead *.cpp call SetOldStyle()
 au BufNewFile,BufRead *.ino call SetOldStyle()
 au BufNewFile,BufRead *.c call SetOldStyle()
 au BufNewFile,BufRead *.h call SetOldStyle()
+
+au BufNewFile,BufRead *.rs call SetRustStyle()
 
 au BufNewFile,BufRead *.html call SetWebStyle()
 au BufNewFile,BufRead *.css call SetWebStyle()
