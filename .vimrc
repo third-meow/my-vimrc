@@ -71,13 +71,6 @@ set autoindent
 set smartindent
 set path+=**
 
-" ---------------------------------- NOT PERMANENT, YOU DONT WANT THIS PART
-" SLOW DOWN H & L		ENCOURGES USE OF w, e & b
-":noremap h :sleep 50m<CR>h
-":noremap l :sleep 50m<CR>l
-" -------------------------------------------------------------------------
-
-
 " remaps
 nnoremap <F3> :GoInfo <CR>
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
@@ -88,15 +81,25 @@ nnoremap <F8> :bn<CR>
 nnoremap j gj
 nnoremap k gk
 
+" ctags
+nnoremap <Leader>] <C-]>
+nnoremap <Leader>[ <C-t>
+
 " spelling related
 noremap <Leader>so :set spell<CR>
 noremap <Leader>sf :set spell!<CR>
-noremap <Leader>] z=1
+noremap <Leader>= z=1
 
+" search highlighting
 nnoremap <silent> <Leader>l ml:execute 'match Search /\%'.line('.').'l/'<CR>
+
+"
 " Snippit commands
 nnoremap <Leader>cpp :-1read $HOME/src/.skeleton.cpp<CR>4ji<TAB>
 nnoremap <Leader>html :-1read $HOME/src/.skeleton.html<CR>3jwf<i
+nnoremap <Leader>c :-1read $HOME/src/.skeleton.c<CR>4jli
+
+
 
 " airline extentions
 let g:airline_extensions = ['branch', 'tabline']
